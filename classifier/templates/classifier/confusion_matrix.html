@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Confusion Matrix</title>
+</head>
+<body>
+    <h1>Confusion Matrix</h1>
+    {% if error %}
+        <p>{{ error }}</p>
+    {% elif image_data %}
+        <img src="data:image/png;base64,{{ image_data }}" alt="Confusion Matrix">
+    {% else %}
+        <p>No data to display yet.</p>
+    {% endif %}
+</body>
+</html>

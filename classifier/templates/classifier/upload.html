@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Classifier</title>
+</head>
+<body>
+    <h1>Upload an Image</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Upload & Classify</button>
+    </form>
+
+    {% if predictions %}
+        <h2>Top Predictions:</h2>
+        <ul>
+        {% for pred in predictions %}
+            <li><strong>{{ pred.label }}</strong> – Confidence: {{ pred.score }}%</li>
+        {% endfor %}
+        </ul>
+
+        {% if warning %}
+            <p style="color: red;"><strong>{{ warning }}</strong></p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
